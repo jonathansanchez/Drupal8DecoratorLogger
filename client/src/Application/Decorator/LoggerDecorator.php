@@ -15,6 +15,8 @@ class LoggerDecorator
 
     public function execute($command)
     {
+        $this->logger->notice('Somenthing was saved.');
+
         return $this->commandHandler->execute($command);
     }
 }
