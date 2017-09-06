@@ -1,0 +1,19 @@
+<phpunit
+        bootstrap="vendor/autoload.php"
+        colors="true"
+        beStrictAboutTestsThatDoNotTestAnything="true"
+        beStrictAboutOutputDuringTests="true"
+        beStrictAboutTestSize="true"
+        beStrictAboutChangesToGlobalState="true">
+    <testsuites>
+        <testsuite name="Drupal8Decorator">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">client/src/Application/Commands/</directory>
+            <directory suffix=".php">client/src/Domain/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
