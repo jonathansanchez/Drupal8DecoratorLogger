@@ -3,6 +3,6 @@ services:
     class: Drupal\client\Infrastructure\Persistence\Database\DatabaseClientRepository
     arguments: ['@database']
 
-  author.saveaclient_service:
+  client.saveaclient_service:
     class: Drupal\client\Application\Commands\SaveAClient
-    arguments: ['@author.dbclientrepository']
+    arguments: ['@client.dbclientrepository']
