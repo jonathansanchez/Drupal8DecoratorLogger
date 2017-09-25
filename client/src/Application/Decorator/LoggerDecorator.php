@@ -2,6 +2,9 @@
 
 namespace Drupal\client\Application\Decorator;
 
+use Drupal\client\Domain\DomainEventPublisher;
+use Drupal\client\Domain\LogDomainEventSubscriber;
+
 class LoggerDecorator
 {
     private $commandHandler;
@@ -15,7 +18,9 @@ class LoggerDecorator
 
     public function execute($command)
     {
-        $this->logger->notice('Somenthing was saved.');
+        DomainEventPublisher::instance()->subscribe(
+            new LogDomainEventSubscriber($this->logger)
+        );
 
         return $this->commandHandler->execute($command);
     }
