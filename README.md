@@ -5,3 +5,4 @@ This is a simple Drupal 8 module example that use Decorator Pattern for log (eve
 I have added:
 1. Domain Driven Design.
 2. Command Handler like a Use Case (or Application Service).
+3. Domain Events
