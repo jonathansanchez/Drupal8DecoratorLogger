@@ -4,6 +4,7 @@ namespace Drupal\client\Domain\Client;
 
 use Drupal\client\Domain\Client\VO\ClientEmail;
 use Drupal\client\Domain\Client\VO\ClientName;
+use Drupal\client\Domain\DomainEventPublisher;
 
 class Client
 {
@@ -16,6 +17,14 @@ class Client
         $this->setName($aName);
         $this->setEmail($anEmail);
         $this->createdAt(new \DateTimeImmutable());
+        $this->publishEvent();
+    }
+
+    protected function publishEvent()
+    {
+        DomainEventPublisher::instance()->publish(
+            new ClientWasCreated($this->name(), $this->email())
+        );
     }
 
     private function setName($aName)
